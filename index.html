@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>GrocWise – Grocery price comparison</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <header>
+            <div class="logo">Groc<span>Wise</span></div>
+
+            <div class="loc">
+                <select id="city" aria-label="City"></select>
+
+                <input
+                    id="pin"
+                    class="field"
+                    inputmode="numeric"
+                    maxlength="6"
+                    placeholder="Pincode"
+                    aria-label="Pincode">
+            </div>
+        </header>
+
+        <section class="hero">
+
+            <h1>What does your cart really cost?</h1>
+
+            <p>
+                Compare Blinkit, Zepto, Instamart and BigBasket after delivery,
+                platform and handling fees, then see if today’s price is a good one.
+            </p>
+
+            <form class="search" id="sf">
+
+                <input
+                    id="q"
+                    list="plist"
+                    placeholder="Search a product, e.g. Tata Salt"
+                    autocomplete="off"
+                    aria-label="Search products">
+
+                <datalist id="plist"></datalist>
+
+                <button class="btn" type="submit">
+                    Compare
+                </button>
+
+            </form>
+
+            <div class="chips" id="chips"></div>
+
+        </section>
+
+        <nav role="tablist">
+
+            <button
+                role="tab"
+                aria-selected="true"
+                data-t="cmp">
+                Compare
+            </button>
+
+            <button
+                role="tab"
+                aria-selected="false"
+                data-t="bsk">
+                Basket <span id="bc"></span>
+            </button>
+
+            <button
+                role="tab"
+                aria-selected="false"
+                data-t="wl">
+                Watchlist <span id="wc"></span>
+            </button>
+
+        </nav>
+
+        <main id="main"></main>
+
+        <footer>
+            Prices on this page are generated sample data for demonstration.
+            No orders are placed and no platform is contacted.
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

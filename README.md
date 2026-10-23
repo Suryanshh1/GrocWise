@@ -232,10 +232,5 @@ The project demonstrates the integration of frontend development, RESTful API de
 
 Suryansh Sharma
 
-B.Tech — Computer Science and Engineering
-
-Chandigarh Group of Colleges, Landran
-
-⸻
 
 GrocWise is an academic and portfolio project. Platform-specific prices are simulated unless explicitly connected to an authorized live pricing source.

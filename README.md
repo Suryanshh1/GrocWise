@@ -110,39 +110,25 @@ The frontend communicates with the backend through REST APIs to retrieve and man
 
 MongoDB stores product information, while Socket.IO enables real-time notifications when product data changes.
 
-📂 Project Structure
+## 🏗️ Project Architecture
 
-GrocWise/
-│
-├── index.html
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   └── script.js
-│
-├── server/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   │
-│   │   ├── models/
-│   │   │   └── Project.js
-│   │   │
-│   │   ├── routes/
-│   │   │   └── productRoutes.js
-│   │   │
-│   │   ├── seed/
-│   │   │   └── seedProducts.js
-│   │   │
-│   │   └── app.js
-│   │
-│   ├── package.json
-│   └── package-lock.json
-│
-├── .gitignore
-└── README.md
+GrocWise follows a client-server architecture.
+
+```text
+                    GrocWise
+                       |
+          +------------+------------+
+          |                         |
+       Frontend                  Backend
+          |                         |
+   HTML, CSS, JS             Node.js + Express
+          |                         |
+          |                     REST APIs
+          |                         |
+          |                      MongoDB
+          |                         |
+          +------ Socket.IO --------+
+                Real-Time Updates
 
 ⚙️ Installation and Setup
 

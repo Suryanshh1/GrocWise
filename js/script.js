@@ -7,7 +7,15 @@
 // Configuration
 // ---------------------------------------
 
-const API_URL = "http://localhost:5001/api/products";
+// Dynamically detect the backend URL.
+// In production (Render.com), the frontend is served by the same
+// Express server, so we use the same origin. Locally we fall back
+// to localhost:5001.
+const BACKEND_ORIGIN = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+    ? "http://localhost:5001"
+    : window.location.origin;
+
+const API_URL = `${BACKEND_ORIGIN}/api/products`;
 
 const PL = [
     { k: 'Blinkit', d: 20, f: 3, h: 4, r: .03, c: 'var(--c1)' },
@@ -29,7 +37,7 @@ const CITY = {
 // Socket.IO connection
 // ---------------------------------------
 
-const socket = io("http://localhost:5001");
+const socket = io(BACKEND_ORIGIN);
 
 socket.on("connect", () => {
     console.log("Connected to GrocWise Socket.IO:", socket.id);

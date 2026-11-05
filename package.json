@@ -1,0 +1,12 @@
+{
+  "name": "grocwise",
+  "version": "1.0.0",
+  "description": "GrocWise grocery price comparison app",
+  "scripts": {
+    "start": "node server/src/app.js",
+    "dev": "cd server && npm run dev"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

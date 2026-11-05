@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const http = require("http");
+const path = require("path");
 const { Server } = require("socket.io");
 
 const connectDB = require("./config/db");
@@ -28,12 +29,23 @@ app.set("io", io);
 // Product API
 app.use("/api/products", productRoutes);
 
-// Home route
-app.get("/", (req, res) => {
-    res.json({
-        message: "Welcome to GrocWise API",
-        status: "Server is running"
-    });
+// Serve static frontend files from the project root
+// In production (Render), frontend is in ../../../ (project root relative to server/src/)
+const frontendPath = path.join(__dirname, "..", "..", "..");
+
+app.use(express.static(frontendPath, {
+    // Don't serve node_modules or server folder
+    index: "index.html"
+}));
+
+// Catch-all: serve index.html for any unknown route (SPA fallback)
+app.get("*", (req, res) => {
+    // Don't interfere with API routes
+    if (req.path.startsWith("/api/")) {
+        return res.status(404).json({ success: false, message: "API route not found" });
+    }
+
+    res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 // Socket.IO connection

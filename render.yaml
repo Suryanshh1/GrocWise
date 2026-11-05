@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: grocwise
+    env: node
+    plan: free
+    rootDir: .
+    buildCommand: cd server && npm install
+    startCommand: node server/src/app.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false   # Set this manually in Render dashboard (keep it secret)
+    healthCheckPath: /api/products
+    autoDeploy: true

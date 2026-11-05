@@ -30,8 +30,9 @@ app.set("io", io);
 app.use("/api/products", productRoutes);
 
 // Serve static frontend files from the project root
-// In production (Render), frontend is in ../../../ (project root relative to server/src/)
-const frontendPath = path.join(__dirname, "..", "..", "..");
+// server/src/app.js lives at <repo>/server/src/app.js
+// so __dirname is <repo>/server/src  → go up 2 levels to reach repo root
+const frontendPath = path.join(__dirname, "..", "..");
 
 app.use(express.static(frontendPath, {
     // Don't serve node_modules or server folder
